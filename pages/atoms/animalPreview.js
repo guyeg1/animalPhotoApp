@@ -3,7 +3,6 @@ import Header from '../molecules/Header';
 
 const AnimalsPage = () => {
 
-    
   return (
     <div>
       <Header/>

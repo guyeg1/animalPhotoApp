@@ -4,10 +4,10 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <footer className="footer ">
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/home.png" alt="Home" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/search.png" alt="Search" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/heart.png" alt="Favourite" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/profile.png" className='' alt="Profile" /></a>
+      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/assets/home.png" alt="Home" /></a>
+      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/assets/search.png" alt="Search" /></a>
+      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/assets/heart.png" alt="Favourite" /></a>
+      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/assets/profile.png" className='' alt="Profile" /></a>
 
       <style jsx>{`
         .footer {

@@ -13,18 +13,18 @@ const Header = () => {
               width={20}
               height={8}
               href="/"
-              src="/t-logo.png"
-              className="h-8 w-20  flex self-center"
+              src="/assets/t-logo.png"
+              className="h-8 w-20 flex self-center"
               alt=""/>            
             </a>
 
-            <a href="#">
-              <Image width={5} height={5} src="/shopping-bag.png" alt="" className="flex mr-5 mt-2 w-5 h-5"/>
+            <a href="../organisms/cart">
+              <Image width={5} height={5} src="/assets/shopping-bag.png" alt="" className="flex mr-5 mt-2 w-5 h-5"/>
             </a>
         </div>
       </header>
 
-      <div className="relative h-24 w-full" />
+      <div className="relative h-24 w-full"/>
     </>
   )
 }
