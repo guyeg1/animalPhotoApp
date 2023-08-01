@@ -17,20 +17,14 @@ const AnimalsPage = () => {
             </p>
             <p className="text-lg mb-4">
               3 interesting facts about turtles:
-
               1. Turtles have been around for millions of years: Turtles are one of the oldest reptile groups and have been around for approximately 220 million years. They have survived major extinction events, including the one that wiped out the dinosaurs. The oldest known turtle fossil dates back to the late Triassic period, making turtles one of the most ancient living reptile groups.
-                
               2. Turtles have protective shells: One of the most distinctive features of turtles is their shell, which serves as a protective covering. The shell is made up of two parts: the carapace (the upper part) and the plastron (the lower part). The shell is fused to the turtle's spine and ribs, providing them with a sturdy defense against predators. Some turtles can retract their heads, legs, and tails into their shells for additional protection.
-                
               3. Turtles come in a variety of sizes and habitats: Turtles exhibit great diversity in terms of size, habitat, and lifestyle. Some species, like the tiny speckled padloper turtle, measure only a few centimeters in length, while others, like the leatherback sea turtle, can grow to be over 6 feet (1.8 meters) long. Turtles inhabit a wide range of environments, including oceans, rivers, lakes, swamps, and even deserts. They have adapted to various diets, from herbivorous to carnivorous, depending on the species.
-                
               These are just a few intriguing facts about turtles. They are fascinating creatures with unique characteristics that have allowed them to survive and thrive for millions of years.
             </p>
-            <p className="text-lg mb-4">
-            </p>
+            <p className="text-lg mb-4"></p>
           </div>
         </div></div>
   );
 };
-
 export default AnimalsPage;

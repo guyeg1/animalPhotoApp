@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Header from '../molecules/Header';
 import Footer from '../molecules/Footer';
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ColorRing } from  'react-loader-spinner'
+import { ColorRing } from  'react-loader-spinner';
 
 
 const AnimalsPage = ({ initialImages }) => {
@@ -17,11 +17,11 @@ const AnimalsPage = ({ initialImages }) => {
 
   useEffect(() => {
     fetchImages(category, page);
-  }, [category, page]);
+  },[category, page]);
 
   useEffect(() => {
     filterImages(category);
-  }, [searchKeyword]);
+  },[searchKeyword]);
 
   const fetchImages = async (category, page) => {
     setLoading(true);
@@ -29,13 +29,17 @@ const AnimalsPage = ({ initialImages }) => {
       const response = await axios.get('https://api.unsplash.com/search/photos/', {
         params: {
           client_id: 'OH9n_HpkCQzYkl4jAC7b1Y38sNPMgq2c6sdsbfoblUw',
-          query: category + ' ' + searchKeyword,
+          query: category,
           page: page,
-          per_page: 20,
+          per_page: 30,
         },
       });
       const fetchedImages = response.data.results;
-      setImages((prevImages) => [ ...fetchedImages, ...prevImages]);
+      if (page === 1) {
+        setImages(fetchedImages) ;
+      } else {
+         setImages((prevImages) => [...prevImages, ...fetchedImages]);
+      }
       setTotalPages(response.data.total_pages);
       setLoading(false);
     } catch (error) {
@@ -46,10 +50,12 @@ const AnimalsPage = ({ initialImages }) => {
 
   const handleCategoryChange = (category) => {
     setCategory(category);
+    setPage(1);
   }
 
   const handleChange = (event) => {
     setSearchKeyword(event.target.value);
+    setPage(1);
   };
 
   const filterImages = () => {
@@ -107,19 +113,19 @@ const AnimalsPage = ({ initialImages }) => {
           </div>
           <div className="swiper-wrapper w-screen snap-x snap-mandatory overflow-x-scroll flex flex-row flex-nowrap items-center justify-between w-screen pl-4 pt-4">
             <div className="slider-container flex justify-between">
-              <div className="slider flex flex-row  w-full xl:gap-96">
-                {filterImages().map((image, index) => (
+              <div className="slider flex flex-row gap-8 w-full">
+                {filterImages().map((image) => (
                   <div key={image.id} className="flex flex-row snap-always snap-end">
-                    <div className="w-80 h-48 bg-stone-100 rounded-2xl pt-2 pl-2 gap-9 flex flex-row snap-align-start">
+                    <div className="w-80 h-48 bg-stone-100 rounded-2xl pt-2 pl-2 gap-8 flex flex-row snap-align-start">
                       <div className='flex flex-col ml-1'>
                         <div className='flex flex-row justify-between'>
                           <p className="font-bold mt-2">{image.likes} ⭐</p>
                         </div>
-                        <p className="text-lg font-bold pt-8">{image.description?.split(' ').slice(0, 4).join(' ') || 'No description available'}</p>
+                        <p className="text-lg font-bold pt-8">{image.description?.split(' ').slice(0, 3).join(' ') || 'No description available'}</p>
                       </div>
                       <div className="w-11/12">
                         <div className="rounded-full flex flex-col pr-2 pt-1">
-                          <Image className='w-6 h-6 flex self-end' alt="" src="/assets/plus.png" width={10} height={10}></Image>
+                          <Image className='w-6 h-6 flex self-end' width={20} height={20} alt="" src="/assets/plus.png"></Image>
                           <div className='pl-2'>
                             <img src={image.urls.regular} alt={image.alt_description} className="rounded-full h-36 w-36"/>
                           </div>
@@ -148,7 +154,6 @@ const AnimalsPage = ({ initialImages }) => {
                 <div>
                   <div key={image.id} className="bg-stone-100 rounded-2xl h-44 relative md:h-80">
                     <div className="h-36 md:h-64 pt-4 flex justify-center snap-align-start">
-
                       <img src={image.urls.regular} alt={image.alt_description} className="h-28 w-28  md:w-72 md:h-64 rounded-full z-30"/>
                     </div>
                     <div className="flex justify-center flex-row justify-around">
@@ -159,7 +164,7 @@ const AnimalsPage = ({ initialImages }) => {
                       <div className='absolute rounded-bl-full rounded-tr-sm bg-yellow-500 h-24 w-24 left-20 bottom-20 mix-blend-darken z-20'></div>
                     </div>
                   </div>
-                  <p className="text-xl opacity-100 mt-4 flex justify-center text-center font-bold">{image.description?.split(' ').slice(0, 5).join(' ') || 'No description available'}</p>
+                  <p className="text-xl opacity-100 mt-4 flex justify-center text-center font-bold">{image.description?.split(' ').slice(0, 4).join(' ') || 'No description available'}</p>
                 </div>
               ))}
             </div>
@@ -175,21 +180,16 @@ export async function getServerSideProps() {
       params: {
         client_id: 'OH9n_HpkCQzYkl4jAC7b1Y38sNPMgq2c6sdsbfoblUw',
         query: 'cats',
-      },
-    });
-    const initialImages = response.data.results.slice(0, 10);
+      },});
+    const initialImages = response.data.results.slice(0, 20);
     return {
       props: {
         initialImages,
-      },
-    };
+      },};
   } catch (error) {
     console.error(error);
     return {
       props: {
         initialImages: [],
-      },
-    };
-  }
-}
+},};}}
 export default AnimalsPage;

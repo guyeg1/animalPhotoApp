@@ -14,4 +14,4 @@ export default function Home() {
         <Link className='underline bg-blue-500 hover:text-2xl border-orange-500 border-2 p-6 text-white text-xl' href="/organisms/animalPhotos">Preview other animals</Link>
       </div>
     </div> )
-}
+};

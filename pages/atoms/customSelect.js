@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { GetServerSideProps } from "next";
 
 
 const CustomSelect = ({ onChange }) => {
@@ -45,11 +44,9 @@ const CustomSelect = ({ onChange }) => {
     if (!result.destination) {
       return;
     }
-
     const updatedOptions = Array.from(options);
     const [removed] = updatedOptions.splice(result.source.index, 1);
     updatedOptions.splice(result.destination.index, 0, removed);
-
     setOptions(updatedOptions);
   };
 
@@ -59,30 +56,15 @@ const CustomSelect = ({ onChange }) => {
 
   return (
     <div className="custom-select h-96">
-      <input
-        className='text-xl text-center w-96 border-2 border-blue-500'
-        type="text"
-        value={filterValue}
-        onChange={handleInputChange}
-        placeholder="Search A Fact"
-      />
+      <input className='text-xl text-center w-96 border-2 border-blue-500' type="text" value={filterValue} onChange={handleInputChange} placeholder="Search A Fact"/>
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="options">
           {(provided) => (
-            <div
-              className="options-container border-2 border-blue-500 w-96 text-xl px-4"
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
+            <div className="options-container border-2 border-blue-500 w-96 text-xl px-4" {...provided.droppableProps} ref={provided.innerRef}>
               {filteredOptions.map((option, index) => (
                 <Draggable key={option} draggableId={option} index={index}>
                   {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="option pt-3 hover:underline"
-                    >
+                    <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="option pt-3 hover:underline">
                       <span onClick={() => handleSelectOption(option)}>
                         {option}
                       </span>

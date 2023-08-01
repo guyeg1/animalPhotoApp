@@ -3,7 +3,6 @@ import Buttons from '../molecules/fullFacts';
 
 
 function FactsPage  ()  {
-
   const handleSelectChange = (filterValue) => {
     {filterValue};
   }
@@ -11,9 +10,8 @@ function FactsPage  ()  {
     <div>
       <Header/>
       <Buttons/>
-      <h1 className='text-4xl text-orange-500 p-8 underline'> </h1>
+      <h1 className='text-4xl text-orange-500 p-8 underline'></h1>
     </div>
   );
 }
-
 export default FactsPage;

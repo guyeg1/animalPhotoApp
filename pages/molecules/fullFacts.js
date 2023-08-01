@@ -12,7 +12,6 @@ const AnimalCard = ({ animal, imageUrl }) => {
   );
 };
 
-
 const Buttons = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
@@ -23,7 +22,6 @@ const Buttons = () => {
       setImageUrl(response.url);
       setBackgroundImageUrl(response.url);
     } 
-    
    catch (error) {
     console.error(error);
   }
@@ -68,5 +66,4 @@ const Buttons = () => {
     </div>
   );
 };
-
 export default Buttons;
