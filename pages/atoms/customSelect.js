@@ -1,3 +1,5 @@
+import  Footer from '../molecules/Footer';
+import  Header from '../molecules/Header';
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
@@ -55,12 +57,14 @@ const CustomSelect = ({ onChange }) => {
   );
 
   return (
-    <div className="custom-select h-96">
-      <input className='text-xl text-center w-96 border-2 border-blue-500' type="text" value={filterValue} onChange={handleInputChange} placeholder="Search A Fact"/>
+    <div className='w-screen h-screen'>
+      <Header/>
+    <div className="custom-select h-12 flex items-center flex-col">
+      <input className='text-xl text-center w-96 border-2 border-orange-300' type="text" value={filterValue} onChange={handleInputChange} placeholder="Search A Fact"/>
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="options">
           {(provided) => (
-            <div className="options-container border-2 border-blue-500 w-96 text-xl px-4" {...provided.droppableProps} ref={provided.innerRef}>
+            <div className="options-container border-2 border-orange-300 w-96 text-xl px-4" {...provided.droppableProps} ref={provided.innerRef}>
               {filteredOptions.map((option, index) => (
                 <Draggable key={option} draggableId={option} index={index}>
                   {(provided) => (
@@ -80,6 +84,8 @@ const CustomSelect = ({ onChange }) => {
           )}
         </Droppable>
       </DragDropContext>
+    </div>
+    <Footer/>
     </div>
   );
 };

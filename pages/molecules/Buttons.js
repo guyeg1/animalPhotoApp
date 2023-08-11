@@ -1,13 +1,10 @@
-import { useState, useEffect } from 'react';  
-
+import { useState } from 'react';  
 
 const AnimalCard = ({ animal, imageUrl }) => {
-  const [animalFact, setAnimalFact] = useState('');
-
   return (
     <div className='w-full'> 
     <div className="animal-card flex flex-row items-center justify-center pt-12 sm:max-xl:flex-col sm:pt-12">
-      <img className='h-96 w-96 border-2 border-blue-500' src={imageUrl} alt={animal}/>
+      <img className='h-96 w-96 border-2 border-blue-500 rounded-2xl' src={imageUrl} alt={animal}/>
     </div></div>
   );
 };
@@ -38,7 +35,7 @@ const Buttons = () => {
 
   const handleSnailButtonClick = async (animal) => {
     try {
-      const response = await fetch("https://api.unsplash.com/search/photos/?client_id=OH9n_HpkCQzYkl4jAC7b1Y38sNPMgq2c6sdsbfoblUw&query=snail");
+      const response = await fetch("https://source.unsplash.com/featured/?${snails}");
       setImageUrl(response.url);
     } catch (error) {
       console.error(error);
@@ -56,7 +53,7 @@ const Buttons = () => {
 
   return (
     <div style={{ backgroundImage: ({backgroundImageUrl}), backgroundSize: 'cover', minHeight: '100vh' }} className='w-full'>
-      <div className='flex justify-center'>
+      <div className='flex justify-center flex-col md:flex md:flex-row'>
         <button className='border-2 border-blue-500 px-8 text-2xl hover:bg-blue-500 hover:text-white' onClick={() => handleCatButtonClick('cat')}>Cat</button>
         <button className='border-2 border-blue-500 px-8 text-2xl hover:bg-blue-500 hover:text-white' onClick={() => handleDogButtonClick('dog')}>Dog</button>
         <button className='border-2 border-blue-500 px-8 text-2xl hover:bg-blue-500 hover:text-white' onClick={() => handleSnailButtonClick('snail')}>Snail</button>

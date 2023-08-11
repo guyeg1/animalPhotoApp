@@ -3,24 +3,10 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-
-.button-wrapper {
-    @apply border-2 h-24 border-stone-300 rounded-2xl px-2; 
+.button-wrapper { 
     height: 87px;
 }
 
-.button-wrapper:active {
-    opacity:1;
-}
-
 .button-content {
-    width: 55px;
-    font-size: 14px;
+    height: 87px;
 }
-
-.stop-element {
-    scroll-snap-stop: always;
-    width: 1rem;
-    height: 0;
-  }
-  

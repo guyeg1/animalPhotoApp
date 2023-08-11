@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
     <footer className="footer ">
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/assets/home.png" alt="Home" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="#"><Image width={30} height={30} src="/assets/search.png" alt="Search" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/assets/heart.png" alt="Favourite" /></a>
-      <a className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/assets/profile.png" className='' alt="Profile" /></a>
+      <Link className='w-10 h-10 md:w-8 md:h-8 p-1' href="/"><Image width={30} height={30} src="/assets/home.png" alt="Home" /></Link>
+      <Link className='w-10 h-10 md:w-8 md:h-8 p-1' href="/atoms/CustomSelect"><Image width={30} height={30} src="/assets/search.png" alt="Search" /></Link>
+      <Link className='w-10 h-10 md:w-8 md:h-8 p-1' href="/organisms/Cart"><Image width={30} height={30} src="/assets/heart.png" alt="Favourite" /></Link>
+      <Link className='w-10 h-10 md:w-8 md:h-8 p-1' href="/molecules/LoginSignup"><Image width={30} height={30} src="/assets/profile.png" className='' alt="Profile" /></Link>
 
       <style jsx>{`
         .footer {
